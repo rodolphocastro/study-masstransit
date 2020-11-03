@@ -12,6 +12,13 @@ namespace MassTut.Commons.Repositories
     public interface ILocationRepository
     {
         /// <summary>
+        /// Gets all locations available.
+        /// </summary>
+        /// <param name="ct"></param>
+        /// <returns></returns>
+        IAsyncEnumerable<Location> GetAll(CancellationToken ct = default);
+
+        /// <summary>
         /// Gets a single Location by its id.
         /// </summary>
         /// <param name="id"></param>
