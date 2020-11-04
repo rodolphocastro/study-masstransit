@@ -25,7 +25,7 @@ namespace MassTut.Keeper
                         x.AddConsumer<LocationEventHandler>();
                         x.SetKebabCaseEndpointNameFormatter();
                         x.UsingInMemory((ctx, cfg) =>
-                        {
+                        {                            
                             cfg.ConfigureEndpoints(ctx);
                         });
                     });

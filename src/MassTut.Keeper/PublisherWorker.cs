@@ -14,6 +14,9 @@ using Microsoft.Extensions.Logging;
 
 namespace MassTut.Keeper
 {
+    /// <summary>
+    /// Worker that constantly publishes a new Command for creating Locations.
+    /// </summary>
     public class PublisherWorker : BackgroundService
     {
         private readonly ILogger<PublisherWorker> _logger;
@@ -35,7 +38,7 @@ namespace MassTut.Keeper
                 using (var scope = _serviceProvider.CreateScope())
                 {
                     var publisher = scope.ServiceProvider.GetRequiredService<IPublishEndpoint>();
-                    await publisher.Publish(new LocationCreatedEvent { Latitude = 99, Longitude = 99, Title = "Published!" });
+                    await publisher.Publish(new CreateLocation { Latitude = 99, Longitude = 99, Title = "Published!" });
                 }
                 _logger.LogInformation("There are {locationCount} locations on the System", await _locationRepository.GetAll(stoppingToken).CountAsync(stoppingToken));
                 await Task.Delay(1000, stoppingToken);
