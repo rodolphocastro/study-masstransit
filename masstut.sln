@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MassTut.Keeper", "src\MassT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MassTut.Columbus", "src\MassTut.Columbus\MassTut.Columbus.csproj", "{34A00161-0E76-4546-8FCD-9097785D6593}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{677B463B-EF57-48D8-96C0-FB68B8D7E16E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{34A00161-0E76-4546-8FCD-9097785D6593}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34A00161-0E76-4546-8FCD-9097785D6593}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34A00161-0E76-4546-8FCD-9097785D6593}.Release|Any CPU.Build.0 = Release|Any CPU
+		{677B463B-EF57-48D8-96C0-FB68B8D7E16E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{677B463B-EF57-48D8-96C0-FB68B8D7E16E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{677B463B-EF57-48D8-96C0-FB68B8D7E16E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{677B463B-EF57-48D8-96C0-FB68B8D7E16E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
