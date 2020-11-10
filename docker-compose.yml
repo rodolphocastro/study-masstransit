@@ -7,6 +7,12 @@ services:
       context: .
       dockerfile: src/MassTut.Keeper/Dockerfile
 
+  masstut.front:
+    image: ${DOCKER_REGISTRY-}masstutfront
+    build:
+      context: .
+      dockerfile: src/MassTut.Front/Dockerfile
+
   event-bus:
     image: rabbitmq:3.8-alpine
-    hostname: event-bus
+    hostname: event-bus    
