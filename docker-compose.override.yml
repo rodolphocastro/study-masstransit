@@ -1,0 +1,11 @@
+version: '3.4'
+services:
+  masstut.keeper:
+    environment:
+      - "RabbitMQ__Host=event-bus"
+      - "RabbitMQ__Username=guest"
+      - "RabbitMQ__Password=guest"
+      - "RabbitMQ__VirtualHost=/"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+    

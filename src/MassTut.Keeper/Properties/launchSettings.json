@@ -7,7 +7,7 @@
       }
     },
     "Docker": {
-      "commandName": "Docker"
+      "commandName": "Docker"      
     }
   }
 }

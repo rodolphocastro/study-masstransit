@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  masstut.keeper:
+    image: ${DOCKER_REGISTRY-}masstutkeeper
+    build:
+      context: .
+      dockerfile: src/MassTut.Keeper/Dockerfile
+
+  event-bus:
+    image: rabbitmq:3.8-alpine
+    hostname: event-bus
