@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MassTut.Keeper", "src\MassT
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{963D39BE-50FE-48AC-8C54-C5AF32DCF3D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MassTut.Front", "src\MassTut.Front\MassTut.Front.csproj", "{7862ACA5-3EE8-4423-9DA6-2C816CCD2D7C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{963D39BE-50FE-48AC-8C54-C5AF32DCF3D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{963D39BE-50FE-48AC-8C54-C5AF32DCF3D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{963D39BE-50FE-48AC-8C54-C5AF32DCF3D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7862ACA5-3EE8-4423-9DA6-2C816CCD2D7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7862ACA5-3EE8-4423-9DA6-2C816CCD2D7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7862ACA5-3EE8-4423-9DA6-2C816CCD2D7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7862ACA5-3EE8-4423-9DA6-2C816CCD2D7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
