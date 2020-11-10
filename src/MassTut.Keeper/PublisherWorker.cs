@@ -38,7 +38,7 @@ namespace MassTut.Keeper
                 using (var scope = _serviceProvider.CreateScope())
                 {
                     var publisher = scope.ServiceProvider.GetRequiredService<IPublishEndpoint>();
-                    await publisher.Publish(new CreateLocation { Latitude = 99, Longitude = 99, Title = "Published!" });
+                    await publisher.Publish(new CreateLocation { Latitude = 99, Longitude = 99, Title = "Published!" }, stoppingToken);
                 }
                 _logger.LogInformation("There are {locationCount} locations on the System", await _locationRepository.GetAll(stoppingToken).CountAsync(stoppingToken));
                 await Task.Delay(1000, stoppingToken);
