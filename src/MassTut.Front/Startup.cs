@@ -1,3 +1,5 @@
+using MassTransit;
+
 using MassTut.Front.Data;
 using MassTut.Keeper.Infrastructure;
 
@@ -32,6 +34,20 @@ namespace MassTut.Front
             var busSettings = Configuration
                 .GetSection(BusSettings.SettingsKey)
                 .Get<BusSettings>();
+            services.AddMassTransit(x =>
+            {                
+                x.SetKebabCaseEndpointNameFormatter();
+                x.UsingRabbitMq((ctx, cfg) =>
+                {
+                    cfg.Host(busSettings.Host, busSettings.VirtualHost, h =>
+                    {
+                        h.Username(busSettings.Username);
+                        h.Password(busSettings.Password);
+                    });
+                    cfg.ConfigureEndpoints(ctx);
+                });
+            });
+            services.AddMassTransitHostedService();
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();

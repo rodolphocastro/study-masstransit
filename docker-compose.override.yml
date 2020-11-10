@@ -13,6 +13,10 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
+      - "RabbitMQ__Host=event-bus"
+      - "RabbitMQ__Username=guest"
+      - "RabbitMQ__Password=guest"
+      - "RabbitMQ__VirtualHost=/"
     ports:
       - "5000:80"
       - "5001:443"
