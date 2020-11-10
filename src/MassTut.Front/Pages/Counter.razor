@@ -1,5 +1,9 @@
 ﻿@page "/counter"
 
+@using MassTut.Commons.Entities
+@using MassTut.Front.Data 
+@inject LocationService LocationService
+
 <h1>Counter</h1>
 
 <p>Current count: @currentCount</p>
@@ -12,5 +16,11 @@
     private void IncrementCount()
     {
         currentCount++;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LocationService.AskForLocations();
+        await base.OnInitializedAsync();
     }
 }

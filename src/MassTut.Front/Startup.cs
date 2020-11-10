@@ -35,7 +35,8 @@ namespace MassTut.Front
                 .GetSection(BusSettings.SettingsKey)
                 .Get<BusSettings>();
             services.AddMassTransit(x =>
-            {                
+            {
+                x.AddConsumer<LocationEventHandler>();
                 x.SetKebabCaseEndpointNameFormatter();
                 x.UsingRabbitMq((ctx, cfg) =>
                 {
@@ -51,6 +52,7 @@ namespace MassTut.Front
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+            services.AddSingleton<LocationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
