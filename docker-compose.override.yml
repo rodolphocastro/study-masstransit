@@ -6,7 +6,22 @@ services:
       - "RabbitMQ__Username=guest"
       - "RabbitMQ__Password=guest"
       - "RabbitMQ__VirtualHost=/"
-      - "Logging__LogLevel__Default=Debug"
+      - "DOTNET_ENVIRONMENT=Development"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
     
+  masstut.gate:
+    environment:
+      - "RabbitMQ__Host=event-bus"
+      - "RabbitMQ__Username=guest"
+      - "RabbitMQ__Password=guest"
+      - "RabbitMQ__VirtualHost=/"
+      - "Logging__LogLevel__Default=Debug"
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - "5000:80"
+      - "5001:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
