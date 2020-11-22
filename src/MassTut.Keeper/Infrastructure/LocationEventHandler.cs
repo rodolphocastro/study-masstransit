@@ -29,7 +29,7 @@ namespace MassTut.Keeper.Infrastructure
 
         public Task Consume(ConsumeContext<CreateLocation> context)
         {
-            _logger.LogDebug("Received location {location} from MassTransit", context.Message);
+            _logger.LogDebug("Received location {@location} from MassTransit", context.Message);
             return _locationRepository.Create(context.Message, context.CancellationToken);
         }
 

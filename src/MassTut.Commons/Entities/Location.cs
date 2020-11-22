@@ -35,6 +35,8 @@
         public double Latitude { get; set; }
         public double Longitude { get; set; }
 
+        public override string ToString() => $"Location {Title} @ (lat: {Latitude},lon: {Longitude})";
+
         /// <summary>
         /// Nullable object for Locations.
         /// </summary>

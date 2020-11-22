@@ -7,6 +7,7 @@ using MassTransit;
 
 using MassTut.Commons.Events.Locations;
 using MassTut.Commons.Repositories;
+using MassTut.Keeper.Infrastructure;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -22,12 +23,14 @@ namespace MassTut.Keeper
         private readonly ILogger<PublisherWorker> _logger;
         private readonly ILocationRepository _locationRepository;
         private readonly IServiceProvider _serviceProvider;
+        private readonly LocationGenerator _generator;
 
-        public PublisherWorker(ILogger<PublisherWorker> logger, ILocationRepository locationRepository, IServiceProvider serviceProvider)
+        public PublisherWorker(ILogger<PublisherWorker> logger, ILocationRepository locationRepository, IServiceProvider serviceProvider, LocationGenerator generator)
         {
             _logger = logger;
             _locationRepository = locationRepository ?? throw new ArgumentNullException(nameof(locationRepository));
             _serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
+            _generator = generator ?? throw new ArgumentNullException(nameof(generator));
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -38,7 +41,13 @@ namespace MassTut.Keeper
                 using (var scope = _serviceProvider.CreateScope())
                 {
                     var publisher = scope.ServiceProvider.GetRequiredService<IPublishEndpoint>();
-                    await publisher.Publish(new CreateLocation { Latitude = 99, Longitude = 99, Title = "Published!" }, stoppingToken);
+                    var subject = _generator.FetchOne();
+                    await publisher.Publish(new CreateLocation 
+                    { 
+                        Latitude = subject.Latitude, 
+                        Longitude = subject.Longitude, 
+                        Title = subject.Title 
+                    }, stoppingToken);
                 }
                 _logger.LogInformation("There are {locationCount} locations on the System", await _locationRepository.GetAll(stoppingToken).CountAsync(stoppingToken));
                 await Task.Delay(1000, stoppingToken);
